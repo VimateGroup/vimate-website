@@ -36,17 +36,22 @@
       text-align: center;
       box-shadow: var(--shadow);
       position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+      margin-bottom: 0.7rem;
+      font-weight: 700;
     }
 
     header p {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       font-weight: 400;
       opacity: 0.95;
       margin-bottom: 0.5rem;
@@ -58,22 +63,28 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 2rem;
-      padding: 1rem 0;
+      gap: 2.5rem;
+      padding: 1.3rem 0;
       position: sticky;
       top: 0;
       z-index: 20;
       animation: navFadeIn 1.2s;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
     }
 
     nav a {
       color: var(--primary);
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.08rem;
+      font-size: 1.15rem;
       position: relative;
       transition: color 0.2s;
-      padding: 0.2rem 0.5rem;
+      padding: 0.2rem 0.7rem;
+      letter-spacing: 0.5px;
     }
 
     nav a::after {
@@ -96,30 +107,33 @@
     }
 
     .container {
-      max-width: 1100px;
-      margin: 2.5rem auto;
-      padding: 2.5rem 2rem;
+      width: 96vw;
+      max-width: 1700px;
+      margin: 3rem auto 2rem auto;
+      padding: 3rem 3vw 3rem 3vw;
       background: var(--accent);
-      border-radius: 20px;
+      border-radius: 12px;
       box-shadow: var(--shadow);
       animation: fadeIn 1.2s;
+      min-height: 60vh;
     }
 
     section {
-      margin-bottom: 2.5rem;
+      margin-bottom: 3.5rem;
     }
 
     h2 {
       color: var(--primary);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
+      font-size: 2.3rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1.2px;
+      font-weight: 700;
     }
 
     /* About */
     #about p {
-      font-size: 1.15rem;
-      line-height: 1.7;
+      font-size: 1.22rem;
+      line-height: 1.8;
       color: #333;
       margin-bottom: 0.5rem;
     }
@@ -128,55 +142,58 @@
     .services-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 1.5rem;
+      gap: 2.5rem;
+      justify-content: space-between;
+      margin-top: 2rem;
     }
 
     .service-card {
       background: var(--white);
-      border-radius: 16px;
+      border-radius: 8px;
       box-shadow: 0 4px 24px 0 rgba(30,58,92,0.07);
-      padding: 2rem 1.5rem;
-      flex: 1 1 220px;
-      max-width: 260px;
-      min-width: 200px;
+      padding: 2.2rem 1.5rem 2rem 1.5rem;
+      flex: 1 1 320px;
+      max-width: 360px;
+      min-width: 240px;
       text-align: center;
       transition: transform 0.2s, box-shadow 0.2s;
       position: relative;
       overflow: hidden;
+      margin-bottom: 1.5rem;
     }
 
     .service-card:hover {
-      transform: translateY(-8px) scale(1.04);
-      box-shadow: 0 8px 32px 0 rgba(0,191,174,0.13);
+      transform: translateY(-10px) scale(1.035);
+      box-shadow: 0 12px 36px 0 rgba(0,191,174,0.14);
       background: linear-gradient(120deg, #f2fcfb 70%, #e3f8f7 100%);
     }
 
     .service-icon {
-      font-size: 2.5rem;
+      font-size: 2.7rem;
       color: var(--secondary);
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
       display: block;
     }
 
     .service-title {
-      font-size: 1.18rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+      font-size: 1.23rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
       color: var(--primary);
+      letter-spacing: 0.5px;
     }
 
     .service-desc {
-      font-size: 1rem;
+      font-size: 1.07rem;
       color: #444;
       opacity: 0.92;
+      line-height: 1.5;
     }
 
     /* Contact */
     #contact p {
-      font-size: 1.08rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.13rem;
+      margin-bottom: 0.6rem;
       color: #333;
     }
 
@@ -195,11 +212,16 @@
       background: linear-gradient(90deg, var(--primary) 60%, var(--secondary) 100%);
       color: var(--white);
       text-align: center;
-      padding: 1.2rem 0;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
+      padding: 1.4rem 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.7px;
       position: relative;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
     }
 
     /* Animations */
@@ -213,37 +235,54 @@
     }
 
     /* Responsive */
-    @media (max-width: 900px) {
+    @media (max-width: 1200px) {
       .container {
-        padding: 1.5rem 1rem;
+        width: 99vw;
+        max-width: 100vw;
+        padding: 2.5rem 1vw;
       }
       .services-list {
-        gap: 1rem;
+        gap: 1.5rem;
       }
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
+      .container {
+        padding: 1.5rem 0.5vw;
+      }
       .services-list {
         flex-direction: column;
         align-items: center;
+        gap: 1.2rem;
       }
       .service-card {
-        max-width: 90vw;
+        max-width: 98vw;
       }
     }
-    @media (max-width: 500px) {
+    @media (max-width: 700px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
       }
       h2 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
       }
       .container {
-        padding: 1rem 0.3rem;
+        padding: 1rem 0.1vw;
         border-radius: 0;
       }
       nav {
         gap: 1rem;
-        font-size: 0.98rem;
+        font-size: 1rem;
+      }
+    }
+    @media (max-width: 500px) {
+      header {
+        padding: 2rem 0.2rem 1.2rem 0.2rem;
+      }
+      nav {
+        padding: 0.7rem 0;
+      }
+      .container {
+        padding: 0.5rem 0;
       }
     }
   </style>
