@@ -386,7 +386,7 @@
       <div class="hero-desc">
         Vimate Group is India’s trusted partner for HR, Payroll, and Workforce Solutions. From our Mumbai HQ to client sites nationwide, we deliver smart, compliant, and people-centric services for organizations of all sizes.
       </div>
-      <button class="hero-cta" onclick="navigateTo('contact')">Get Started</button>
+      <button class="hero-cta" id="heroCtaBtn">Get Started</button>
     </div>
   </header>
   <div class="nav-wrapper">
@@ -500,4 +500,113 @@
     <!-- Locations Page with India Map and Pins -->
     <section id="locations">
       <h2>Our Metro City Coverage</h2>
-      <div style="text-align:center
+      <div style="text-align:center; margin-bottom:1.3rem;">
+        <b>Pan-India presence in all major metro cities:</b>
+      </div>
+      <div class="map-wrapper">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/India_location_map.svg"
+             alt="India Map" class="india-map">
+        <!-- Pinpoints for major metros (approximate positions) -->
+        <span class="map-pin" style="left:49%; top:18%;" title="Delhi">
+          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
+          <span class="map-pin-label">Delhi</span>
+        </span>
+        <span class="map-pin" style="left:32%; top:62%;" title="Mumbai">
+          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
+          <span class="map-pin-label">Mumbai</span>
+        </span>
+        <span class="map-pin" style="left:83%; top:38%;" title="Kolkata">
+          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
+          <span class="map-pin-label">Kolkata</span>
+        </span>
+        <span class="map-pin" style="left:70%; top:85%;" title="Chennai">
+          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
+          <span class="map-pin-label">Chennai</span>
+        </span>
+        <span class="map-pin" style="left:58%; top:79%;" title="Bengaluru">
+          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
+          <span class="map-pin-label">Bengaluru</span>
+        </span>
+        <span class="map-pin" style="left:60%; top:65%;" title="Hyderabad">
+          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
+          <span class="map-pin-label">Hyderabad</span>
+        </span>
+        <span class="map-pin" style="left:28%; top:41%;" title="Ahmedabad">
+          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
+          <span class="map-pin-label">Ahmedabad</span>
+        </span>
+        <span class="map-pin" style="left:36%; top:68%;" title="Pune">
+          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
+          <span class="map-pin-label">Pune</span>
+        </span>
+      </div>
+      <div class="cta" style="margin-top:2rem;">
+        Multi-location, multi-state compliance and staffing—handled with ease.
+      </div>
+    </section>
+    <!-- Contact Page -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-details">
+        <p><b>Phone:</b> +91-XXXXXXXXXX</p>
+        <p><b>Email:</b> <a href="mailto:info@vimategroup.com">info@vimategroup.com</a></p>
+        <p>Get in touch with our HR experts today!</p>
+      </div>
+      <form id="contactForm" autocomplete="off">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your Name">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@email.com">
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+        <div class="form-success" id="formSuccess" style="display:none;">Thank you! We'll get back to you soon.</div>
+      </form>
+    </section>
+  </div>
+  <footer>
+    &copy; 2025 Vimate Group. All rights reserved.
+  </footer>
+  <script>
+    // Wait for DOM to be loaded before attaching event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('nav a');
+      const sections = document.querySelectorAll('.container section');
+      function navigateTo(page) {
+        navLinks.forEach(l => {
+          if (l.dataset.page === page) l.classList.add('active');
+          else l.classList.remove('active');
+        });
+        sections.forEach(sec => sec.classList.remove('active'));
+        document.getElementById(page).classList.add('active');
+        document.querySelector('.container').scrollIntoView({behavior: 'smooth'});
+      }
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          navigateTo(link.dataset.page);
+        });
+      });
+      // Hero CTA button navigates to Contact
+      document.getElementById('heroCtaBtn').addEventListener('click', function() {
+        navigateTo('contact');
+      });
+      // Contact form fake submit
+      document.getElementById('contactForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        document.getElementById('formSuccess').style.display = 'block';
+        this.reset();
+        setTimeout(() => {
+          document.getElementById('formSuccess').style.display = 'none';
+        }, 4000);
+      });
+    });
+  </script>
+</body>
+</html>
