@@ -3,750 +3,303 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vimate Group – HR, Payroll & Workforce Solutions India</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Vimate Group – HR & Workforce Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #003366;
+      --primary: #1e3a5c;
       --secondary: #00bfae;
-      --accent: #f9fafb;
+      --accent: #fff;
       --background: #f4f8fb;
-      --card: #fff;
-      --text: #1a2236;
-      --muted: #687287;
-      --cta: #00bfae;
-      --cta-hover: #009e93;
-      --danger: #e74c3c;
-      --radius: 14px;
-      --shadow: 0 8px 32px 0 rgba(0,51,102,0.08);
-      --transition: 0.2s cubic-bezier(.77,0,.18,1);
-      --container-width: 1120px;
+      --text: #222;
+      --radius: 16px;
+      --shadow: 0 8px 32px 0 rgba(30,58,92,0.10);
+      --stat-bg: #f0f7fa;
+      --card-bg: #fff;
+      --timeline-dot: #00bfae;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', 'Montserrat', Arial, sans-serif;
+      font-family: 'Montserrat', Arial, sans-serif;
       background: var(--background);
       color: var(--text);
       min-height: 100vh;
-      font-size: 1.05rem;
-      line-height: 1.65;
-      letter-spacing: 0.02em;
     }
     header {
-      position: relative;
-      background: linear-gradient(102deg, var(--primary) 55%, var(--secondary) 100%);
-      color: #fff;
-      min-height: 440px;
+      background: linear-gradient(90deg, var(--primary) 60%, var(--secondary) 100%);
+      color: var(--accent);
+      padding: 2.8rem 0 2.2rem 0;
       text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80') center/cover;
-      opacity: 0.13; z-index: 0;
-      pointer-events: none;
-    }
-    .hero {
-      position: relative; z-index: 2;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 4rem 1.2rem 2.5rem 1.2rem;
-      display: flex; flex-direction: column; align-items: center;
-      gap: 1.2rem;
+      box-shadow: var(--shadow);
+      position: relative;
     }
     .hero-title {
-      font-size: 2.9rem;
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2.6rem;
       font-weight: 700;
-      letter-spacing: 1.2px;
-      line-height: 1.18;
-      margin-bottom: 0.6rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.7rem;
     }
     .hero-desc {
-      font-size: 1.23rem;
-      font-weight: 400;
-      color: #eaf7f6;
-      margin-bottom: 0.7rem;
-      opacity: 0.95;
-      max-width: 600px;
+      font-size: 1.25rem;
+      opacity: 0.96;
+      margin-bottom: 1.2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .hero-highlights {
-      margin-top: 0.6em;
-      color: #b4fff6;
-      font-size: 1.01em;
-      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e0fffa;
+      letter-spacing: 0.5px;
     }
     .hero-btns {
-      display: flex; gap: 1rem; margin-top: 1.2rem;
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
     }
     .btn {
-      background: var(--cta);
+      background: var(--secondary);
       color: #fff;
       border: none;
-      border-radius: 7px;
-      padding: 1rem 2.5rem;
+      border-radius: 6px;
+      padding: 0.9rem 2.2rem;
       font-size: 1.1rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,191,174,0.12);
-      transition: background var(--transition), transform var(--transition);
-      outline: none;
-      display: flex; align-items: center; gap: 0.75em;
+      box-shadow: 0 2px 8px rgba(0,191,174,0.10);
+      transition: background 0.2s, transform 0.2s;
     }
     .btn.secondary {
-      background: transparent;
-      color: #fff;
-      border: 2px solid #fff;
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--secondary);
     }
-    .btn:hover, .btn:focus { background: var(--cta-hover); transform: translateY(-2px) scale(1.03); }
-    .btn.secondary:hover, .btn.secondary:focus { background: #fff; color: var(--primary); }
-    .floating-btn {
-      position: fixed; bottom: 22px; right: 22px; z-index: 55;
-      background: var(--secondary);
+    .btn:hover {
+      background: var(--primary);
       color: #fff;
-      border-radius: 50%;
-      width: 54px; height: 54px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 20px rgba(0,191,174,0.18);
-      font-size: 1.8rem;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
+      transform: translateY(-2px) scale(1.03);
     }
-    .floating-btn:hover { background: var(--cta-hover); transform: scale(1.09);}
     nav {
-      background: var(--card);
+      background: var(--accent);
       box-shadow: 0 2px 8px rgba(30,58,92,0.05);
-      position: sticky; top: 0; z-index: 30;
-      border-bottom: 2px solid #f0f4f7;
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     .nav-inner {
-      max-width: var(--container-width);
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 0.5rem 2vw;
+      justify-content: space-between;
+      gap: 2rem;
     }
-    .nav-logo {
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 1.45rem;
-      font-weight: 800;
+    .nav-logo span {
+      font-weight: 700;
+      font-size: 1.3rem;
       color: var(--primary);
-      letter-spacing: 1.5px;
-      display: flex; align-items: center; gap: 0.4em;
+      letter-spacing: 1px;
+      padding-left: 1rem;
     }
     .nav-links {
-      display: flex; gap: 2rem;
+      display: flex;
+      gap: 1.5rem;
     }
     .nav-links a {
       color: var(--primary);
       text-decoration: none;
-      font-weight: 700;
-      font-size: 1.09rem;
-      padding: 0.45rem 1.1rem;
-      border-radius: 5px;
-      transition: background var(--transition), color var(--transition);
-      position: relative;
+      font-weight: 600;
+      font-size: 1.08rem;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      cursor: pointer;
     }
-    .nav-links a.active, .nav-links a:hover {
+    .nav-links a.active,
+    .nav-links a:hover {
       color: var(--secondary);
-      background: #eaf7f6;
-    }
-    @media (max-width: 750px) {
-      .nav-inner { flex-direction: column; gap: 0.4rem; align-items: flex-start;}
-      .nav-links { gap: 0.7rem; }
+      background: #f0f9f8;
     }
     .container {
-      max-width: var(--container-width);
+      max-width: 1100px;
       margin: 2.5rem auto 2rem auto;
-      padding: 2.3rem 2vw;
-      background: var(--card);
+      padding: 2.5rem 2rem 2.5rem 2rem;
+      background: var(--accent);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       min-height: 60vh;
-      transition: box-shadow var(--transition);
     }
-    section { display: none; animation: fadeIn 0.7s; }
-    section.active { display: block; }
-    h2 {
-      color: var(--primary);
-      font-size: 2.2rem;
-      margin-bottom: 1.1rem;
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-align: left;
-    }
-    /* Stats */
+    /* Home Page Modern UI */
     .stats-row {
-      display: flex; gap: 2.2rem; flex-wrap: wrap; margin: 2.2rem 0 1.1rem 0;
-      justify-content: flex-start;
-    }
-    .stat-card {
-      background: #eaf7f6;
-      border-radius: 11px;
-      padding: 1.3rem 2.2rem;
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.13rem;
-      display: flex; flex-direction: column; align-items: center;
-      min-width: 180px;
-      box-shadow: 0 2px 8px #00bfae11;
-      text-align: center;
-    }
-    .stat-card .big-num {
-      font-size: 2.2rem;
-      color: var(--secondary);
-      margin-bottom: 0.2em;
-      font-family: 'Montserrat', Arial, sans-serif;
-      letter-spacing: 2px;
-    }
-    /* Trust Badges & Values */
-    .trust-carousel, .values-row {
-      margin: 2.5rem 0 0.7rem 0;
-      display: flex; gap: 1.2rem; flex-wrap: wrap;
-      justify-content: flex-start; align-items: center;
-    }
-    .trust-badge, .value-badge {
-      background: #e9f7f7;
-      border-radius: 9px;
-      padding: 1rem 1.7rem;
-      font-size: 1.07rem;
-      color: var(--primary);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      min-width: 160px;
-      box-shadow: 0 2px 8px #00bfae0a;
-    }
-    .trust-badge .emoji, .value-badge .emoji {
-      font-size: 1.5rem;
-      color: var(--secondary);
-    }
-    /* Timeline */
-    .timeline {
-      margin: 1.2rem 0 1.7rem 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 1.4rem;
-      font-size: 1.08rem;
-      color: #223;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
     }
-    .timeline div {
-      background: #f6fafd;
-      padding: 0.7em 1.2em;
-      border-radius: 7px;
-      border-left: 4px solid var(--secondary);
-      box-shadow: 0 2px 8px #00bfae11;
+    .stat-card {
+      background: var(--stat-bg);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
       min-width: 180px;
+      text-align: center;
+      box-shadow: 0 2px 8px #00bfae11;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
     }
-    /* Services */
+    .big-num {
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: var(--secondary);
+      margin-bottom: 0.2rem;
+      letter-spacing: 1px;
+    }
     .services-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.7rem;
-      justify-content: flex-start;
-      margin-top: 1.5rem;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 1.2rem;
     }
     .service-card {
-      background: #f6fafd;
-      border-radius: 13px;
-      box-shadow: 0 2px 12px 0 rgba(30,58,92,0.04);
-      padding: 2rem 1.4rem 1.6rem 1.4rem;
-      flex: 1 1 240px;
-      max-width: 295px;
-      min-width: 200px;
-      text-align: left;
-      transition: transform var(--transition), box-shadow var(--transition);
-      position: relative;
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px 0 rgba(30,58,92,0.04);
+      padding: 1.7rem 1.2rem 1.5rem 1.2rem;
+      flex: 1 1 220px;
+      max-width: 250px;
+      min-width: 180px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 0.5rem;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.5rem;
-      border: 1.7px solid #e0f4f0;
-    }
-    .service-card:hover {
-      transform: translateY(-6px) scale(1.035);
-      box-shadow: 0 8px 32px 0 rgba(0,191,174,0.13);
-      background: linear-gradient(120deg, #f2fcfb 70%, #e3f8f7 100%);
-      border-color: var(--secondary);
+      border: 1.5px solid #f0f7fa;
     }
     .service-icon {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       color: var(--secondary);
       margin-bottom: 0.5rem;
       display: block;
     }
     .service-title {
-      font-size: 1.18rem;
+      font-size: 1.13rem;
       font-weight: 700;
+      margin-bottom: 0.2rem;
       color: var(--primary);
-      letter-spacing: 0.2px;
-      margin-bottom: 0.13rem;
-      font-family: 'Montserrat', Arial, sans-serif;
     }
     .service-desc {
       font-size: 1.01rem;
       color: #444;
-      opacity: 0.93;
+      opacity: 0.92;
       line-height: 1.5;
       font-weight: 400;
-      margin-bottom: 0.3em;
     }
-    .service-learn {
-      margin-top: 0.25em;
-      background: var(--secondary);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 0.45em 1.2em;
-      font-size: 1.01rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
+    .whyus-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-top: 1.2rem;
     }
-    .service-learn:hover { background: var(--cta-hover); transform: scale(1.04);}
-    /* Why Us */
-    .whyus-row { display: flex; flex-wrap: wrap; gap: 2rem; margin: 2rem 0 1rem 0;}
     .whyus-card {
-      background: #eaf7f6;
-      border-radius: 9px;
-      padding: 1.2rem 1.8rem;
-      font-size: 1.09rem;
-      color: var(--primary);
-      font-weight: 700;
-      min-width: 170px;
-      display: flex; gap: 0.7em; align-items: center;
-      box-shadow: 0 2px 8px #00bfae13;
-    }
-    /* About List */
-    .about-list {
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
-      padding-left: 1.2rem;
-      color: #333;
-      font-size: 1.08rem;
-    }
-    .about-list li {
-      margin-bottom: 0.7rem;
-      line-height: 1.66;
-    }
-    /* Locations Map */
-    .map-wrapper {
-      width: 100%;
-      max-width: 540px;
-      margin: 1.7rem auto 0 auto;
-      position: relative;
-      border-radius: 14px;
-      box-shadow: 0 2px 12px #00bfae17;
-      background: #f6fafd;
-      overflow: hidden;
-      min-height: 320px;
-    }
-    .india-map-svg {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 14px;
-    }
-    .svg-pin {
-      cursor: pointer;
-      transition: transform var(--transition);
-      stroke: #1e3a5c;
-      stroke-width: 2.2;
-    }
-    .svg-pin:hover {
-      transform: scale(1.18);
-      fill: var(--danger);
-    }
-    .city-popup {
-      display: none;
-      position: fixed;
-      left: 50%;
-      top: 20%;
-      transform: translate(-50%, 0);
-      background: #fff;
-      border-radius: 13px;
-      box-shadow: var(--shadow);
-      padding: 1.5rem 2.3rem;
-      z-index: 100;
-      min-width: 260px;
-      max-width: 97vw;
-      text-align: left;
+      background: #f9fafc;
+      border-radius: 10px;
+      padding: 1.2rem 1.7rem;
       font-size: 1.05rem;
       color: var(--primary);
-      animation: fadeIn 0.4s;
-    }
-    .city-popup.active { display: block; }
-    .city-popup-close {
-      position: absolute;
-      top: 7px;
-      right: 17px;
-      font-size: 1.2rem;
-      color: #888;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    /* Contact */
-    .contact-details {
-      margin-bottom: 1.3rem;
-      font-size: 1.07rem;
-      color: #344;
-    }
-    .contact-details p { margin-bottom: 0.4rem;}
-    .contact-socials {
-      margin: 1.2em 0 0.6em 0;
-      display: flex; gap: 1.1em; align-items: center;
-    }
-    .contact-socials a {
-      color: var(--secondary);
-      font-size: 2rem;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contact-socials a:hover { color: var(--primary);}
-    form {
-      background: #f6fafd;
-      border-radius: 11px;
-      padding: 1.6rem 1.1rem;
-      max-width: 410px;
-      margin: 0 auto;
-      box-shadow: 0 2px 10px 0 rgba(30,58,92,0.06);
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-    }
-    label {
       font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 0.2rem;
-      font-size: 0.99rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      box-shadow: 0 2px 8px #00bfae0b;
     }
-    input, textarea {
-      padding: 0.8rem;
-      border: 1.2px solid #d1e6ee;
-      border-radius: 5px;
-      font-size: 1.03rem;
-      font-family: inherit;
-      background: #f7fafc;
-      transition: border var(--transition);
-    }
-    input:focus, textarea:focus {
-      border: 1.7px solid var(--secondary);
-      outline: none;
-    }
-    textarea { min-height: 70px; resize: vertical; }
-    button[type="submit"] {
-      background: var(--secondary);
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 0.9rem 0;
-      font-size: 1.08rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-      margin-top: 0.3rem;
-      letter-spacing: 0.5px;
-    }
-    button[type="submit"]:hover { background: var(--primary); }
-    .form-success {
+    .whyus-card span {
+      font-size: 1.3rem;
       color: var(--secondary);
+    }
+    .values-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-top: 1.2rem;
+    }
+    .value-badge {
+      background: #eaf9f7;
+      border-radius: 8px;
+      padding: 0.7rem 1.5rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 1.06rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 2px 8px #00bfae0b;
     }
-    footer {
-      background: linear-gradient(90deg, var(--primary) 60%, var(--secondary) 100%);
-      color: var(--accent);
-      text-align: center;
-      padding: 1.2rem 0;
-      font-size: 1.04rem;
-      letter-spacing: 0.5px;
-      margin-top: 2rem;
-      display: flex; flex-direction: column; gap: 0.35rem; align-items: center;
+    .value-badge .emoji {
+      font-size: 1.3rem;
     }
-    .footer-socials {
-      display: flex; gap: 1.2em; margin-bottom: 0.2em;
+    .timeline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1.2rem;
     }
-    .footer-socials a {
-      color: #fff; font-size: 1.3rem; opacity: 0.8;
-      transition: color 0.2s, opacity 0.2s;
+    .timeline div {
+      position: relative;
+      background: #f6fafd;
+      border-radius: 8px;
+      padding: 1.1rem 1.4rem;
+      font-size: 1.05rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      box-shadow: 0 2px 8px #00bfae0b;
     }
-    .footer-socials a:hover { color: var(--secondary); opacity: 1;}
-    /* Animations */
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: none;} }
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .container { max-width: 99vw; padding: 2rem 1vw; }
-      .nav-inner { max-width: 99vw; }
-      .hero { padding: 2.2rem 2vw 2.5rem 2vw;}
+    .timeline div::before {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--timeline-dot);
+      margin-right: 0.7rem;
+      vertical-align: middle;
     }
-    @media (max-width: 900px) {
-      .container { padding: 1.2rem 0.5vw; }
-      .services-list, .trust-carousel, .logo-carousel, .stats-row, .whyus-row, .values-row, .timeline {
-        flex-direction: column; align-items: flex-start; gap: 1.1rem;
-      }
-      .service-card, .trust-badge, .stat-card, .whyus-card, .value-badge { max-width: 100%; }
-      .map-wrapper { max-width: 99vw; }
+    /* Locations Map Modern UI */
+    .map-wrapper {
+      max-width: 420px;
+      margin: 0 auto;
+      position: relative;
+      background: #f6fafd;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px #00bfae17;
+      overflow: hidden;
     }
-    @media (max-width: 700px) {
-      .hero-title { font-size: 1.47rem; }
-      h2 { font-size: 1.1rem; }
-      .container { padding: 0.5rem 0.2vw; border-radius: 0; }
-      .nav-inner { padding: 0.2rem 2vw;}
-      .city-popup { padding: 1rem 0.5rem; min-width: 150px;}
+    .map-wrapper img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px #00bfae17;
     }
-    @media (max-width: 500px) {
-      header { padding: 0.7rem 0.1rem 0.7rem 0.1rem; }
-      nav { padding: 0.2rem 0; }
-      .container { padding: 0.2rem 0; }
-      form { padding: 0.6rem 0.2rem; }
-      .map-wrapper { padding: 0;}
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="hero-bg"></div>
-    <div class="hero">
-      <div class="hero-title">Your Workforce, Our Expertise</div>
-      <div class="hero-desc">
-        Empowering organizations since 2014 with tech-driven, compliance-first HR solutions.
-        <div class="hero-highlights">
-          150+ clients | 40,000+ payrolls | Pan-India | 100% Compliance
-        </div>
-      </div>
-      <div class="hero-btns">
-        <button class="btn" id="getQuoteBtn">Get Quote</button>
-        <button class="btn secondary" id="bookConsultBtn">Book Free Consultation</button>
-      </div>
-    </div>
-  </header>
-  <nav>
-    <div class="nav-inner">
-      <div class="nav-logo"><span>Vimate Group</span></div>
-      <div class="nav-links">
-        <a class="active" data-page="home">Home</a>
-        <a data-page="services">Services</a>
-        <a data-page="about">About</a>
-        <a data-page="whyus">Why Us</a>
-        <a data-page="locations">Locations</a>
-        <a data-page="contact">Contact</a>
-      </div>
-    </div>
-  </nav>
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/919702638950" target="_blank" aria-label="WhatsApp" class="floating-btn" style="bottom:90px;right:22px;"><span>💬</span></a>
-  <!-- Call Floating Button -->
-  <a href="tel:+919702638950" aria-label="Call Us" class="floating-btn" style="bottom:22px;right:22px; background:var(--primary);"><span>📞</span></a>
-  <div class="container">
-    <!-- Home Page -->
-<section id="home" class="active">
-  <!-- Section 1: Quick Stats -->
-  <div class="stats-row">
-    <div class="stat-card"><div class="big-num">150+</div>Clients Served</div>
-    <div class="stat-card"><div class="big-num">40,000+</div>Payrolls Processed</div>
-    <div class="stat-card"><div class="big-num">100%</div>Compliance</div>
-    <div class="stat-card"><div class="big-num">Pan-India</div>Presence</div>
-  </div>
-  <!-- Section 2: What We Do -->
-  <h2>What We Do</h2>
-  <div class="services-list">
-    <div class="service-card">
-      <span class="service-icon">🔍</span>
-      <div class="service-title">Recruitment</div>
-      <div class="service-desc">Permanent & contract hiring across industries.</div>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">👷‍♂️</span>
-      <div class="service-title">Staffing</div>
-      <div class="service-desc">On-demand manpower & workforce outsourcing.</div>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">💳</span>
-      <div class="service-title">Payroll</div>
-      <div class="service-desc">Full payroll management & compliance.</div>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">📝</span>
-      <div class="service-title">Compliance</div>
-      <div class="service-desc">Licensing, audits, and legal adherence for all states.</div>
-    </div>
-  </div>
-  <!-- Section 3: Why Vimate Group -->
-  <h2 style="margin-top:2.5rem;">Why Vimate Group?</h2>
-  <div class="whyus-row">
-    <div class="whyus-card"><span>✅</span>Compliance-First Approach</div>
-    <div class="whyus-card"><span>💡</span>Tech-Driven Processes</div>
-    <div class="whyus-card"><span>🤝</span>Dedicated Account Managers</div>
-    <div class="whyus-card"><span>📍</span>Pan-India Delivery</div>
-  </div>
-  <!-- Section 4: Our Values -->
-  <h2 style="margin-top:2.5rem;">Our Values</h2>
-  <div class="values-row">
-    <div class="value-badge"><span class="emoji">🔒</span>Integrity</div>
-    <div class="value-badge"><span class="emoji">🚀</span>Agility</div>
-    <div class="value-badge"><span class="emoji">👥</span>People-First</div>
-    <div class="value-badge"><span class="emoji">📈</span>Results</div>
-  </div>
-  <!-- Section 5: Timeline / Experience -->
-  <h2 style="margin-top:2.5rem;">Our Journey</h2>
-  <div class="timeline">
-    <div>2014: Founded in Mumbai</div>
-    <div>2017: Pan-India coverage</div>
-    <div>2020: 100+ clients milestone</div>
-    <div>2024: 40,000+ payrolls processed</div>
-  </div>
-</section>
-
-    <!-- Services Page -->
-    <section id="services">
-      <h2>Our Services</h2>
-      <div class="services-list">
-        <div class="service-card">
-          <span class="service-icon">🔍</span>
-          <div class="service-title">Recruitment & Talent Acquisition</div>
-          <div class="service-desc">
-            <b>Permanent, contract, and executive search</b> for manufacturing, BFSI, IT, pharma and more.
-            <ul style="margin-top:0.5em;font-size:0.97em;">
-              <li>AI-powered candidate sourcing</li>
-              <li>Skill & psychometric assessments</li>
-              <li>Diversity hiring</li>
-            </ul>
-          </div>
-          <button class="service-learn">Enquire</button>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">👷‍♂️</span>
-          <div class="service-title">Manpower Staffing & Outsourcing</div>
-          <div class="service-desc">
-            <b>Contract staffing, payroll-on-roll, and temp staffing</b> across India.
-            <ul style="margin-top:0.5em;font-size:0.97em;">
-              <li>Onboarding & background checks</li>
-              <li>Attendance & leave management</li>
-              <li>End-to-end compliance</li>
-            </ul>
-          </div>
-          <button class="service-learn">Enquire</button>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">💳</span>
-          <div class="service-title">Payroll & HRMS</div>
-          <div class="service-desc">
-            <b>Automated payroll and HR management platform</b>.<br>
-            <ul style="margin-top:0.5em;font-size:0.97em;">
-              <li>Payroll processing, payslips, TDS, PF/ESI</li>
-              <li>ESS portal & mobile app</li>
-              <li>Support for multiple locations</li>
-            </ul>
-          </div>
-          <button class="service-learn">Enquire</button>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">📝</span>
-          <div class="service-title">Labour Law Compliance</div>
-          <div class="service-desc">
-            <b>Licensing, returns, registers, audits</b> for all Indian states.<br>
-            <ul style="margin-top:0.5em;font-size:0.97em;">
-              <li>Shops & Establishment Act</li>
-              <li>CLRA, EPF, ESI, Factories Act</li>
-              <li>Digital compliance dashboard</li>
-            </ul>
-          </div>
-          <button class="service-learn">Enquire</button>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">💡</span>
-          <div class="service-title">HR Advisory & Training</div>
-          <div class="service-desc">
-            <b>Strategic HR consulting, L&D and policy design</b>.<br>
-            <ul style="margin-top:0.5em;font-size:0.97em;">
-              <li>Employee engagement</li>
-              <li>POSH, compliance & IR training</li>
-              <li>HR digital transformation</li>
-            </ul>
-          </div>
-          <button class="service-learn">Enquire</button>
-        </div>
-      </div>
-    </section>
-    <!-- About Page -->
-    <section id="about">
-      <h2>About Vimate Group</h2>
-      <ul class="about-list">
-        <li><b>Our Vision:</b> To set new standards for HR & Compliance with a people-first, technology-driven approach.</li>
-        <li><b>Mission:</b> Empower organizations to focus on growth while we deliver trust, well-being, and sustainable excellence.</li>
-        <li>Founded in 2014 – Rebranded 2022. 150+ clients, 100+ cities, all major industries.</li>
-        <li>I.C.E. Values: Integrity, Innovation, Client-Centric, Collaboration, Excellence.</li>
-      </ul>
-      <div class="timeline">
-        <div><b>2014:</b> Launch as NVHR Pvt Ltd</div>
-        <div><b>2016:</b> Labour Compliance Services</div>
-        <div><b>2019:</b> Cloud HRMS (ESS/MSS)</div>
-        <div><b>2021:</b> 40,000+ Payroll Headcount</div>
-        <div><b>2022:</b> Rebranded Vimate Group</div>
-        <div><b>2024:</b> 5,000+ Monthly Audits</div>
-      </div>
-      <div class="trust-carousel">
-        <div class="trust-badge"><span class="emoji">🏆</span> Trusted by Fortune 500</div>
-        <div class="trust-badge"><span class="emoji">⚙️</span> Tech-Enabled HR</div>
-        <div class="trust-badge"><span class="emoji">📈</span> 40,000+ Payroll Processed</div>
-        <div class="trust-badge"><span class="emoji">🕒</span> 24x7 Support</div>
-      </div>
-    </section>
-    <!-- Why Us Page -->
-    <section id="whyus">
-      <h2>Why Choose Vimate?</h2>
-      <div class="whyus-row">
-        <div class="whyus-card">🎓 <b>Expertise:</b> Seasoned HR & compliance pros.</div>
-        <div class="whyus-card">🎯 <b>Custom Solutions:</b> Tailored for your needs.</div>
-        <div class="whyus-card">💸 <b>Cost-Efficiency:</b> Strategic outsourcing, max ROI.</div>
-        <div class="whyus-card">🤝 <b>Comprehensive Support:</b> End-to-end execution.</div>
-      </div>
-    </section>
-    <!-- Locations Page with SVG Map and PNG Fallback --><section id="locations">
-  <h2>Our Metro City Coverage</h2>
-  <div style="text-align:center; margin-bottom:1.3rem;">
-    <b>Pan-India presence in all major metro cities:</b>
-  </div>
-  <div class="map-wrapper" style="max-width: 420px; margin: 0 auto; position: relative; background: #f6fafd; border-radius: 14px; box-shadow: 0 2px 12px #00bfae17;">
-    <img 
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/India_Map_with_States_and_UTs.png/600px-India_Map_with_States_and_UTs.png"
-      alt="India Map" 
-      style="width:100%; display:block; border-radius: 14px;"
-      id="indiaMapImg"
-    />
-    <!-- Pins: positions are % relative to image -->
-    <span class="map-pin" style="left:53%; top:21%;" title="Delhi"></span>
-    <span class="map-pin" style="left:31%; top:65%;" title="Mumbai"></span>
-    <span class="map-pin" style="left:88%; top:33%;" title="Kolkata"></span>
-    <span class="map-pin" style="left:70%; top:87%;" title="Chennai"></span>
-    <span class="map-pin" style="left:58%; top:80%;" title="Bengaluru"></span>
-    <span class="map-pin" style="left:60%; top:66%;" title="Hyderabad"></span>
-    <span class="map-pin" style="left:29%; top:40%;" title="Ahmedabad"></span>
-    <span class="map-pin" style="left:36%; top:71%;" title="Pune"></span>
-    <!-- Pin CSS and tooltip handled below -->
-  </div>
-  <div class="cta" style="margin-top:2rem;">
-    Multi-location, multi-state compliance and staffing—handled with ease.
-  </div>
-  <style>
     .map-pin {
       position: absolute;
       width: 24px; height: 24px;
-      background: #00bfae;
-      border: 3px solid #003366;
+      background: var(--secondary);
+      border: 3px solid var(--primary);
       border-radius: 50%;
       transform: translate(-50%, -50%);
       cursor: pointer;
@@ -765,7 +318,7 @@
       top: 120%;
       transform: translateX(-50%);
       background: #fff;
-      color: #003366;
+      color: var(--primary);
       font-size: 0.95rem;
       font-weight: 700;
       padding: 2px 10px;
@@ -779,25 +332,208 @@
     .map-pin:hover::after, .map-pin:focus::after {
       opacity: 1;
     }
-    @media (max-width: 600px) {
+    .cta {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    /* Contact, About, Services: keep your previous styles */
+    footer {
+      background: linear-gradient(90deg, var(--primary) 60%, var(--secondary) 100%);
+      color: var(--accent);
+      text-align: center;
+      padding: 1.1rem 0;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      margin-top: 2rem;
+    }
+    @media (max-width: 1200px) {
+      .container { max-width: 98vw; padding: 2rem 1vw; }
+      nav { max-width: 98vw; }
+      .hero { padding: 0 2vw; }
+    }
+    @media (max-width: 900px) {
+      .container { padding: 1.2rem 0.5vw; }
+      .services-list, .stats-row, .whyus-row, .values-row, .timeline {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .service-card, .stat-card, .whyus-card, .value-badge { max-width: 100%; }
       .map-wrapper { max-width: 99vw; }
     }
+    @media (max-width: 700px) {
+      .hero-title { font-size: 1.5rem; }
+      h2 { font-size: 1.1rem; }
+      .container { padding: 0.7rem 0.1vw; border-radius: 0; }
+      nav { gap: 0.7rem; font-size: 0.95rem; }
+    }
+    @media (max-width: 500px) {
+      header { padding: 1.1rem 0.2rem 0.7rem 0.2rem; }
+      nav { padding: 0.5rem 0; }
+      .container { padding: 0.3rem 0; }
+      .map-wrapper { padding: 0; }
+    }
   </style>
-</section>
-
-
-    <!-- Contact Page -->
+</head>
+<body>
+  <header>
+    <div class="hero-title">Your Workforce, Our Expertise</div>
+    <div class="hero-desc">
+      Empowering organizations since 2014 with tech-driven, compliance-first HR solutions.
+      <div class="hero-highlights">
+        150+ clients | 40,000+ payrolls | Pan-India | 100% Compliance
+      </div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn" id="getQuoteBtn">Get Quote</button>
+      <button class="btn secondary" id="bookConsultBtn">Book Free Consultation</button>
+    </div>
+  </header>
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo"><span>Vimate Group</span></div>
+      <div class="nav-links">
+        <a class="active" data-page="home">Home</a>
+        <a data-page="services">Services</a>
+        <a data-page="about">About</a>
+        <a data-page="locations">Locations</a>
+        <a data-page="contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <!-- HOME PAGE -->
+    <section id="home" class="active">
+      <div class="stats-row">
+        <div class="stat-card"><div class="big-num">150+</div>Clients Served</div>
+        <div class="stat-card"><div class="big-num">40,000+</div>Payrolls Processed</div>
+        <div class="stat-card"><div class="big-num">100%</div>Compliance</div>
+        <div class="stat-card"><div class="big-num">Pan-India</div>Presence</div>
+      </div>
+      <h2>What We Do</h2>
+      <div class="services-list">
+        <div class="service-card">
+          <span class="service-icon">🔍</span>
+          <div class="service-title">Recruitment</div>
+          <div class="service-desc">Permanent & contract hiring across industries.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">👷‍♂️</span>
+          <div class="service-title">Staffing</div>
+          <div class="service-desc">On-demand manpower & workforce outsourcing.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">💳</span>
+          <div class="service-title">Payroll</div>
+          <div class="service-desc">Full payroll management & compliance.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📝</span>
+          <div class="service-title">Compliance</div>
+          <div class="service-desc">Licensing, audits, and legal adherence for all states.</div>
+        </div>
+      </div>
+      <h2 style="margin-top:2.5rem;">Why Vimate Group?</h2>
+      <div class="whyus-row">
+        <div class="whyus-card"><span>✅</span>Compliance-First Approach</div>
+        <div class="whyus-card"><span>💡</span>Tech-Driven Processes</div>
+        <div class="whyus-card"><span>🤝</span>Dedicated Account Managers</div>
+        <div class="whyus-card"><span>📍</span>Pan-India Delivery</div>
+      </div>
+      <h2 style="margin-top:2.5rem;">Our Values</h2>
+      <div class="values-row">
+        <div class="value-badge"><span class="emoji">🔒</span>Integrity</div>
+        <div class="value-badge"><span class="emoji">🚀</span>Agility</div>
+        <div class="value-badge"><span class="emoji">👥</span>People-First</div>
+        <div class="value-badge"><span class="emoji">📈</span>Results</div>
+      </div>
+      <h2 style="margin-top:2.5rem;">Our Journey</h2>
+      <div class="timeline">
+        <div>2014: Founded in Mumbai</div>
+        <div>2017: Pan-India coverage</div>
+        <div>2020: 100+ clients milestone</div>
+        <div>2024: 40,000+ payrolls processed</div>
+      </div>
+    </section>
+    <!-- SERVICES PAGE -->
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services-list">
+        <div class="service-card">
+          <span class="service-icon">🔍</span>
+          <div class="service-title">Permanent Recruitment</div>
+          <div class="service-desc">Hire top talent across manufacturing, retail, IT, pharma, and more.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">👷‍♂️</span>
+          <div class="service-title">Manpower Staffing</div>
+          <div class="service-desc">Contract labour and workforce outsourcing PAN India, compliance guaranteed.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">💳</span>
+          <div class="service-title">Payroll Services</div>
+          <div class="service-desc">Full payroll management with statutory compliance and timely salary processing.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📝</span>
+          <div class="service-title">Labour Compliance Management</div>
+          <div class="service-desc">Licensing, registrations, audits, and legal adherence for all Indian states.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">💡</span>
+          <div class="service-title">HR Advisory & Training</div>
+          <div class="service-desc">Employee engagement, training, and strategic HR consulting.</div>
+        </div>
+      </div>
+    </section>
+    <!-- ABOUT PAGE -->
+    <section id="about">
+      <h2>About Vimate Group</h2>
+      <ul class="about-list">
+        <li><strong>Our Vision:</strong> To be India’s most trusted compliance-first HR partner.</li>
+        <li>Founded to bridge HR gaps in Indian industries, combining on-ground experience with technology and statutory expertise.</li>
+        <li>Serving diverse sectors: manufacturing, logistics, retail, IT, pharma, and more.</li>
+        <li>Headquartered in Mumbai with a delivery network across India.</li>
+        <li>Driven by a passion for people, compliance, and results.</li>
+      </ul>
+    </section>
+    <!-- LOCATIONS PAGE -->
+    <section id="locations">
+      <h2>Our Metro City Coverage</h2>
+      <div style="text-align:center; margin-bottom:1.3rem;">
+        <b>Pan-India presence in all major metro cities:</b>
+      </div>
+      <div class="map-wrapper" style="max-width: 420px; margin: 0 auto; position: relative;">
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/India_Map_with_States_and_UTs.png/600px-India_Map_with_States_and_UTs.png"
+          alt="India Map" 
+          style="width:100%; display:block; border-radius: 14px;"
+          id="indiaMapImg"
+        />
+        <span class="map-pin" style="left:53%; top:21%;" title="Delhi"></span>
+        <span class="map-pin" style="left:31%; top:65%;" title="Mumbai"></span>
+        <span class="map-pin" style="left:88%; top:33%;" title="Kolkata"></span>
+        <span class="map-pin" style="left:70%; top:87%;" title="Chennai"></span>
+        <span class="map-pin" style="left:58%; top:80%;" title="Bengaluru"></span>
+        <span class="map-pin" style="left:60%; top:66%;" title="Hyderabad"></span>
+        <span class="map-pin" style="left:29%; top:40%;" title="Ahmedabad"></span>
+        <span class="map-pin" style="left:36%; top:71%;" title="Pune"></span>
+      </div>
+      <div class="cta" style="margin-top:2rem;">
+        Multi-location, multi-state compliance and staffing—handled with ease.
+      </div>
+    </section>
+    <!-- CONTACT PAGE -->
     <section id="contact">
       <h2>Contact Us</h2>
       <div class="contact-details">
-        <p><b>Phone:</b> <a href="tel:+919702638950">+91-9702638950</a></p>
-        <p><b>Email:</b> <a href="mailto:business@vimategroup.com">business@vimategroup.com</a></p>
-        <p>Connect with our HR experts for a tailored solution for your business.</p>
-      </div>
-      <div class="contact-socials">
-        <a href="https://wa.me/919702638950" target="_blank" title="WhatsApp"><span>💬</span></a>
-        <a href="https://linkedin.com/company/vimate-group" target="_blank" title="LinkedIn"><span>🔗</span></a>
-        <a href="mailto:business@vimategroup.com" title="Email"><span>✉️</span></a>
+        <p><b>Phone:</b> +91-XXXXXXXXXX</p>
+        <p><b>Email:</b> <a href="mailto:info@vimategroup.com">info@vimategroup.com</a></p>
+        <p>Get in touch with our HR experts today!</p>
       </div>
       <form id="contactForm" autocomplete="off">
         <div>
@@ -818,17 +554,11 @@
     </section>
   </div>
   <footer>
-    <div class="footer-socials">
-      <a href="https://wa.me/919702638950" target="_blank" title="WhatsApp">💬</a>
-      <a href="https://linkedin.com/company/vimate-group" target="_blank" title="LinkedIn">🔗</a>
-      <a href="mailto:business@vimategroup.com" title="Email">✉️</a>
-    </div>
-    <span>&copy; 2025 Vimate Group. All rights reserved.</span>
-    <span style="font-size:0.98em;opacity:0.7;">Privacy Policy | Terms of Service</span>
+    &copy; 2025 Vimate Group. All rights reserved.
   </footer>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Navigation
+      // Navigation logic for multi-page effect
       const navLinks = document.querySelectorAll('.nav-links a');
       const sections = document.querySelectorAll('.container section');
       function navigateTo(page) {
@@ -846,85 +576,20 @@
           navigateTo(link.dataset.page);
         });
       });
-      document.getElementById('homeCtaBtn').addEventListener('click', function() {
-        navigateTo('contact');
-      });
       document.getElementById('getQuoteBtn').addEventListener('click', function() {
         navigateTo('contact');
-        setTimeout(() => { document.getElementById('contactForm').scrollIntoView({behavior: "smooth"}); }, 450);
       });
       document.getElementById('bookConsultBtn').addEventListener('click', function() {
         navigateTo('contact');
-        setTimeout(() => { document.getElementById('contactForm').scrollIntoView({behavior: "smooth"}); }, 450);
       });
-      // Animated Stats Counters
-      function animateCounters() {
-        document.querySelectorAll('.big-num').forEach(function(el) {
-          const target = +el.getAttribute('data-count');
-          let val = 0;
-          const inc = Math.ceil(target/60);
-          function step() {
-            val += inc;
-            if (val > target) val = target;
-            el.textContent = el.textContent.endsWith('%') ? val + '%' : val;
-            if (val < target) requestAnimationFrame(step);
-          }
-          step();
-        });
-      }
-      animateCounters();
-      // Interactive SVG Map Pins
-      const cityData = {
-        "Delhi": "Delhi NCR: Vimate Group supports clients in India's capital with recruitment, compliance, and workforce solutions for all sectors.",
-        "Mumbai": "Mumbai: Our HQ & largest delivery hub, serving BFSI, manufacturing, retail, IT and global clients.",
-        "Kolkata": "Kolkata: Logistics, manufacturing, and service sector HR in eastern India.",
-        "Chennai": "Chennai: Payroll & compliance for IT, auto, and industrial clients.",
-        "Bengaluru": "Bengaluru: Tech-enabled HR and staffing for IT, startups, manufacturing.",
-        "Hyderabad": "Hyderabad: Workforce & compliance management for pharma, IT, infra.",
-        "Ahmedabad": "Ahmedabad: Gujarat's industrial/textile sector staffing and compliance.",
-        "Pune": "Pune: Manpower & payroll for auto, engineering, and IT."
-      };
-      const pins = document.querySelectorAll('.svg-pin');
-      const cityPopup = document.getElementById('cityPopup');
-      const cityPopupContent = document.getElementById('cityPopupContent');
-      const closeCityPopup = document.getElementById('closeCityPopup');
-      pins.forEach(pin => {
-        pin.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const city = pin.getAttribute('data-city');
-          cityPopupContent.innerHTML = `<b>${city}</b><br>${cityData[city] || ''}`;
-          cityPopup.classList.add('active');
-        });
-      });
-      function hideCityPopup() { cityPopup.classList.remove('active'); }
-      closeCityPopup.addEventListener('click', hideCityPopup);
-      cityPopup.addEventListener('click', hideCityPopup);
-      cityPopupContent.addEventListener('click', function(e) { e.stopPropagation(); });
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') hideCityPopup();
-      });
-      // Contact form validation and fake submit
+      // Contact form fake submit
       document.getElementById('contactForm').addEventListener('submit', function(e){
         e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-        if (!name || !email || !message) {
-          alert("Please fill out all fields.");
-          return;
-        }
         document.getElementById('formSuccess').style.display = 'block';
         this.reset();
         setTimeout(() => {
           document.getElementById('formSuccess').style.display = 'none';
         }, 4000);
-      });
-      // Service card enquire buttons
-      document.querySelectorAll('.service-learn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          navigateTo('contact');
-          setTimeout(() => { document.getElementById('contactForm').scrollIntoView({behavior: "smooth"}); }, 450);
-        });
       });
     });
   </script>
