@@ -715,36 +715,76 @@
         <div class="whyus-card">🤝 <b>Comprehensive Support:</b> End-to-end execution.</div>
       </div>
     </section>
-    <!-- Locations Page with SVG Map and PNG Fallback -->
-    <section id="locations">
+    <!-- Locations Page with SVG Map and PNG Fallback --><section id="locations">
   <h2>Our Metro City Coverage</h2>
   <div style="text-align:center; margin-bottom:1.3rem;">
     <b>Pan-India presence in all major metro cities:</b>
   </div>
-  <div class="map-wrapper" id="indiaMapWrapper">
-    <svg class="india-map-svg" viewBox="0 0 1000 1000">
-      <!-- India outline (simplified, but recognizable) -->
-      <path d="M 500 100 Q 700 200 600 400 Q 800 600 600 800 Q 400 900 300 700 Q 100 500 300 300 Q 400 200 500 100 Z" fill="#eaf9f7" stroke="#1e3a5c" stroke-width="2"/>
-      <!-- Pins (approximate) -->
-      <circle class="svg-pin" data-city="Delhi" cx="520" cy="210" r="18" fill="#00bfae"/>
-      <circle class="svg-pin" data-city="Mumbai" cx="350" cy="700" r="18" fill="#00bfae"/>
-      <circle class="svg-pin" data-city="Kolkata" cx="700" cy="400" r="18" fill="#00bfae"/>
-      <circle class="svg-pin" data-city="Chennai" cx="600" cy="800" r="18" fill="#00bfae"/>
-      <circle class="svg-pin" data-city="Bengaluru" cx="520" cy="750" r="18" fill="#00bfae"/>
-      <circle class="svg-pin" data-city="Hyderabad" cx="570" cy="600" r="18" fill="#00bfae"/>
-      <circle class="svg-pin" data-city="Ahmedabad" cx="400" cy="500" r="18" fill="#00bfae"/>
-      <circle class="svg-pin" data-city="Pune" cx="400" cy="670" r="18" fill="#00bfae"/>
-    </svg>
+  <div class="map-wrapper" style="max-width: 420px; margin: 0 auto; position: relative; background: #f6fafd; border-radius: 14px; box-shadow: 0 2px 12px #00bfae17;">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/India_Map_with_States_and_UTs.png/600px-India_Map_with_States_and_UTs.png"
+      alt="India Map" 
+      style="width:100%; display:block; border-radius: 14px;"
+      id="indiaMapImg"
+    />
+    <!-- Pins: positions are % relative to image -->
+    <span class="map-pin" style="left:53%; top:21%;" title="Delhi"></span>
+    <span class="map-pin" style="left:31%; top:65%;" title="Mumbai"></span>
+    <span class="map-pin" style="left:88%; top:33%;" title="Kolkata"></span>
+    <span class="map-pin" style="left:70%; top:87%;" title="Chennai"></span>
+    <span class="map-pin" style="left:58%; top:80%;" title="Bengaluru"></span>
+    <span class="map-pin" style="left:60%; top:66%;" title="Hyderabad"></span>
+    <span class="map-pin" style="left:29%; top:40%;" title="Ahmedabad"></span>
+    <span class="map-pin" style="left:36%; top:71%;" title="Pune"></span>
+    <!-- Pin CSS and tooltip handled below -->
   </div>
   <div class="cta" style="margin-top:2rem;">
     Multi-location, multi-state compliance and staffing—handled with ease.
   </div>
-  <!-- City Info Popup -->
-  <div class="city-popup" id="cityPopup">
-    <button class="city-popup-close" id="closeCityPopup" aria-label="Close">&times;</button>
-    <div id="cityPopupContent"></div>
-  </div>
+  <style>
+    .map-pin {
+      position: absolute;
+      width: 24px; height: 24px;
+      background: #00bfae;
+      border: 3px solid #003366;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      box-shadow: 0 2px 8px #00bfae33;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 2;
+    }
+    .map-pin:hover, .map-pin:focus {
+      background: #e74c3c;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+    .map-pin::after {
+      content: attr(title);
+      position: absolute;
+      left: 50%;
+      top: 120%;
+      transform: translateX(-50%);
+      background: #fff;
+      color: #003366;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 7px;
+      box-shadow: 0 2px 8px #00336611;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .map-pin:hover::after, .map-pin:focus::after {
+      opacity: 1;
+    }
+    @media (max-width: 600px) {
+      .map-wrapper { max-width: 99vw; }
+    }
+  </style>
 </section>
+
 
     <!-- Contact Page -->
     <section id="contact">
