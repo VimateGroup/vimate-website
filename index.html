@@ -264,8 +264,41 @@
       pointer-events: none;
       transition: opacity 0.2s;
     }
-    .map-pin:hover .map-pin-label {
+    .map-pin:hover .map-pin-label,
+    .map-pin:focus .map-pin-label,
+    .map-pin.active .map-pin-label {
       opacity: 1;
+    }
+    /* City Info Popup */
+    .city-popup {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 20%;
+      transform: translate(-50%, 0);
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px 0 rgba(30,58,92,0.20);
+      padding: 1.5rem 2rem;
+      z-index: 100;
+      min-width: 260px;
+      max-width: 90vw;
+      text-align: left;
+      font-size: 1.05rem;
+      color: var(--primary);
+      animation: fadeIn 0.4s;
+    }
+    .city-popup.active { display: block; }
+    .city-popup-close {
+      position: absolute;
+      top: 8px;
+      right: 16px;
+      font-size: 1.2rem;
+      color: #888;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
     }
     /* Contact */
     .contact-details {
@@ -369,6 +402,7 @@
       h2 { font-size: 1.1rem; }
       .container { padding: 0.7rem 0.1vw; border-radius: 0; }
       nav { gap: 0.7rem; font-size: 0.95rem; }
+      .city-popup { padding: 1rem 0.6rem; min-width: 150px; }
     }
     @media (max-width: 500px) {
       header { padding: 1.1rem 0.2rem 0.7rem 0.2rem; }
@@ -503,45 +537,19 @@
       <div style="text-align:center; margin-bottom:1.3rem;">
         <b>Pan-India presence in all major metro cities:</b>
       </div>
-      <div class="map-wrapper">
+      <div class="map-wrapper" id="indiaMapWrapper">
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/India_location_map.svg"
              alt="India Map" class="india-map">
         <!-- Pinpoints for major metros (approximate positions) -->
-        <span class="map-pin" style="left:49%; top:18%;" title="Delhi">
-          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
-          <span class="map-pin-label">Delhi</span>
-        </span>
-        <span class="map-pin" style="left:32%; top:62%;" title="Mumbai">
-          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
-          <span class="map-pin-label">Mumbai</span>
-        </span>
-        <span class="map-pin" style="left:83%; top:38%;" title="Kolkata">
-          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
-          <span class="map-pin-label">Kolkata</span>
-        </span>
-        <span class="map-pin" style="left:70%; top:85%;" title="Chennai">
-          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
-          <span class="map-pin-label">Chennai</span>
-        </span>
-        <span class="map-pin" style="left:58%; top:79%;" title="Bengaluru">
-          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
-          <span class="map-pin-label">Bengaluru</span>
-        </span>
-        <span class="map-pin" style="left:60%; top:65%;" title="Hyderabad">
-          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
-          <span class="map-pin-label">Hyderabad</span>
-        </span>
-        <span class="map-pin" style="left:28%; top:41%;" title="Ahmedabad">
-          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
-          <span class="map-pin-label">Ahmedabad</span>
-        </span>
-        <span class="map-pin" style="left:36%; top:68%;" title="Pune">
-          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
-          <span class="map-pin-label">Pune</span>
-        </span>
+        <!-- Pins will be injected by JS -->
       </div>
       <div class="cta" style="margin-top:2rem;">
         Multi-location, multi-state compliance and staffing—handled with ease.
+      </div>
+      <!-- City Info Popup -->
+      <div class="city-popup" id="cityPopup">
+        <button class="city-popup-close" id="closeCityPopup" aria-label="Close">&times;</button>
+        <div id="cityPopupContent"></div>
       </div>
     </section>
     <!-- Contact Page -->
@@ -574,8 +582,8 @@
     &copy; 2025 Vimate Group. All rights reserved.
   </footer>
   <script>
-    // Wait for DOM to be loaded before attaching event listeners
     document.addEventListener('DOMContentLoaded', function() {
+      // Navigation
       const navLinks = document.querySelectorAll('nav a');
       const sections = document.querySelectorAll('.container section');
       function navigateTo(page) {
@@ -593,13 +601,108 @@
           navigateTo(link.dataset.page);
         });
       });
-      // Hero CTA button navigates to Contact
       document.getElementById('heroCtaBtn').addEventListener('click', function() {
         navigateTo('contact');
       });
-      // Contact form fake submit
+
+      // Interactive India Map with Pins
+      const cities = [
+        {
+          name: "Delhi",
+          left: "49%", top: "18%",
+          details: "Delhi NCR: Vimate Group supports clients in India's capital with recruitment, compliance, and workforce solutions for all sectors."
+        },
+        {
+          name: "Mumbai",
+          left: "32%", top: "62%",
+          details: "Mumbai: Our headquarters and largest delivery hub, serving the financial, manufacturing, retail, and IT industries."
+        },
+        {
+          name: "Kolkata",
+          left: "83%", top: "38%",
+          details: "Kolkata: Coverage for logistics, manufacturing, and service sector clients in eastern India."
+        },
+        {
+          name: "Chennai",
+          left: "70%", top: "85%",
+          details: "Chennai: HR, payroll, and compliance services for IT, automotive, and industrial clients in southern India."
+        },
+        {
+          name: "Bengaluru",
+          left: "58%", top: "79%",
+          details: "Bengaluru: Tech-enabled HR and staffing solutions for IT, startups, and manufacturing."
+        },
+        {
+          name: "Hyderabad",
+          left: "60%", top: "65%",
+          details: "Hyderabad: End-to-end workforce and compliance management for pharma, IT, and infrastructure."
+        },
+        {
+          name: "Ahmedabad",
+          left: "28%", top: "41%",
+          details: "Ahmedabad: Supporting Gujarat's industrial and textile sectors with staffing and compliance."
+        },
+        {
+          name: "Pune",
+          left: "36%", top: "68%",
+          details: "Pune: Manpower outsourcing and payroll for automotive, engineering, and IT clients."
+        }
+      ];
+      const mapWrapper = document.getElementById('indiaMapWrapper');
+      const cityPopup = document.getElementById('cityPopup');
+      const cityPopupContent = document.getElementById('cityPopupContent');
+      const closeCityPopup = document.getElementById('closeCityPopup');
+
+      // Add pins to the map
+      cities.forEach(city => {
+        const span = document.createElement('span');
+        span.className = 'map-pin';
+        span.style.left = city.left;
+        span.style.top = city.top;
+        span.setAttribute('tabindex', '0');
+        span.setAttribute('title', city.name);
+        span.innerHTML = `
+          <svg width="22" height="22"><circle cx="11" cy="11" r="8" fill="#00bfae" stroke="#1e3a5c" stroke-width="2"/></svg>
+          <span class="map-pin-label">${city.name}</span>
+        `;
+        span.addEventListener('click', function(e) {
+          e.stopPropagation();
+          showCityPopup(city);
+        });
+        span.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            showCityPopup(city);
+          }
+        });
+        mapWrapper.appendChild(span);
+      });
+
+      function showCityPopup(city) {
+        cityPopupContent.innerHTML = `<b>${city.name}</b><br>${city.details}`;
+        cityPopup.classList.add('active');
+      }
+      function hideCityPopup() {
+        cityPopup.classList.remove('active');
+      }
+      closeCityPopup.addEventListener('click', hideCityPopup);
+      cityPopup.addEventListener('click', hideCityPopup);
+      cityPopupContent.addEventListener('click', function(e) { e.stopPropagation(); });
+      // Hide popup on Esc key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') hideCityPopup();
+      });
+
+      // Contact form validation and fake submit
       document.getElementById('contactForm').addEventListener('submit', function(e){
         e.preventDefault();
+        // Simple validation
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        if (!name || !email || !message) {
+          alert("Please fill out all fields.");
+          return;
+        }
         document.getElementById('formSuccess').style.display = 'block';
         this.reset();
         setTimeout(() => {
