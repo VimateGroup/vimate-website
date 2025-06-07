@@ -686,4 +686,141 @@
           <div class="team-role">Head of Compliance</div>
         </div>
         <div class="team-card">
-          <img src="https://random
+          <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Operations" />
+          <div class="team-name">Rahul Verma</div>
+          <div class="team-role">Operations Lead</div>
+        </div>
+        <div class="team-card">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="HR" />
+          <div class="team-name">Sunita Rao</div>
+          <div class="team-role">HR Manager</div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2.2rem;">
+        <a href="#" onclick="document.querySelector('.nav-links a[data-page=contact]').click();return false;" class="btn" style="font-size:1.07rem; padding:0.9rem 2.1rem;">Let's Connect</a>
+      </div>
+    </section>
+    <!-- LOCATIONS PAGE: Metro Cards -->
+    <section id="locations">
+      <h2>Our Metro City Coverage</h2>
+      <div style="text-align:center; margin-bottom:1.3rem;">
+        <b>Pan-India presence in all major metro cities:</b>
+      </div>
+      <div class="metro-grid">
+        <div class="metro-card">
+          <img class="metro-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Delhi" />
+          <div class="metro-title">Delhi</div>
+          <div class="metro-caption">India's capital and NCR hub</div>
+        </div>
+        <div class="metro-card">
+          <img class="metro-img" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Mumbai" />
+          <div class="metro-title">Mumbai</div>
+          <div class="metro-caption">Financial capital, Vimate HQ</div>
+        </div>
+        <div class="metro-card">
+          <img class="metro-img" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Kolkata" />
+          <div class="metro-title">Kolkata</div>
+          <div class="metro-caption">Gateway to East India</div>
+        </div>
+        <div class="metro-card">
+          <img class="metro-img" src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=400&q=80" alt="Chennai" />
+          <div class="metro-title">Chennai</div>
+          <div class="metro-caption">Southern industrial hub</div>
+        </div>
+        <div class="metro-card">
+          <img class="metro-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Bengaluru" />
+          <div class="metro-title">Bengaluru</div>
+          <div class="metro-caption">India's Silicon Valley</div>
+        </div>
+        <div class="metro-card">
+          <img class="metro-img" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=400&q=80" alt="Hyderabad" />
+          <div class="metro-title">Hyderabad</div>
+          <div class="metro-caption">Tech & pharma powerhouse</div>
+        </div>
+        <div class="metro-card">
+          <img class="metro-img" src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80" alt="Ahmedabad" />
+          <div class="metro-title">Ahmedabad</div>
+          <div class="metro-caption">Gujarat's business center</div>
+        </div>
+        <div class="metro-card">
+          <img class="metro-img" src="https://images.unsplash.com/photo-1518684079-9ca5b6b8b6e1?auto=format&fit=crop&w=400&q=80" alt="Pune" />
+          <div class="metro-title">Pune</div>
+          <div class="metro-caption">Auto & IT innovation city</div>
+        </div>
+      </div>
+      <div class="cta" style="margin-top:2rem;">
+        Multi-location, multi-state compliance and staffing—handled with ease.
+      </div>
+    </section>
+    <!-- CONTACT PAGE -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-details">
+        <p><b>Phone:</b> +91-XXXXXXXXXX</p>
+        <p><b>Email:</b> <a href="mailto:info@vimategroup.com">info@vimategroup.com</a></p>
+        <p>Get in touch with our HR experts today!</p>
+      </div>
+      <form id="contactForm" autocomplete="off">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your Name">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@email.com">
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+        <div class="form-success" id="formSuccess" style="display:none;">Thank you! We'll get back to you soon.</div>
+      </form>
+    </section>
+  </div>
+  <footer>
+    &copy; 2025 Vimate Group. All rights reserved.
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // SPA Navigation
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const sections = document.querySelectorAll('.container section');
+      function navigateTo(page) {
+        navLinks.forEach(l => {
+          if (l.dataset.page === page) l.classList.add('active');
+          else l.classList.remove('active');
+        });
+        sections.forEach(sec => sec.classList.remove('active'));
+        document.getElementById(page).classList.add('active');
+        document.querySelector('.container').scrollIntoView({behavior: 'smooth'});
+      }
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          navigateTo(link.dataset.page);
+        });
+      });
+      if (document.getElementById('getQuoteBtn')) {
+        document.getElementById('getQuoteBtn').addEventListener('click', function() {
+          navigateTo('contact');
+        });
+      }
+      if (document.getElementById('bookConsultBtn')) {
+        document.getElementById('bookConsultBtn').addEventListener('click', function() {
+          navigateTo('contact');
+        });
+      }
+      // Contact form fake submit
+      document.getElementById('contactForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        document.getElementById('formSuccess').style.display = 'block';
+        this.reset();
+        setTimeout(() => {
+          document.getElementById('formSuccess').style.display = 'none';
+        }, 4000);
+      });
+    });
+  </script>
+</body>
+</html>
