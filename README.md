@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vimate Group</title>
+  <title>Vimate Group – HR & Workforce Solutions</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;400&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -14,6 +15,8 @@
       --shadow: 0 8px 32px 0 rgba(30,58,92,0.10);
       --container-width: 1100px;
       --radius: 14px;
+      --cta: #007b7c;
+      --cta-hover: #005c5d;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -29,16 +32,40 @@
       text-align: center;
       box-shadow: var(--shadow);
     }
-    header h1 {
-      font-size: 2.4rem;
-      letter-spacing: 1px;
-      margin-bottom: 0.6rem;
-      font-weight: 700;
+    .hero {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
     }
-    header p {
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .hero-desc {
       font-size: 1.18rem;
-      font-weight: 400;
       opacity: 0.96;
+      margin-bottom: 0.5rem;
+      max-width: 700px;
+    }
+    .hero-cta {
+      margin-top: 1rem;
+      background: var(--cta);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.9rem 2.2rem;
+      font-size: 1.12rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(0,191,174,0.10);
+    }
+    .hero-cta:hover {
+      background: var(--cta-hover);
     }
     .nav-wrapper {
       background: var(--accent);
@@ -109,42 +136,7 @@
       font-weight: 700;
       text-align: left;
     }
-    /* Home Highlights */
-    .highlights {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-      justify-content: flex-start;
-    }
-    .highlight-card {
-      background: #f6fafd;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px 0 rgba(30,58,92,0.04);
-      padding: 1.1rem 1.4rem;
-      min-width: 180px;
-      max-width: 260px;
-      flex: 1 1 180px;
-      font-size: 1.02rem;
-      color: var(--primary);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-    .highlight-card span {
-      font-size: 1.5rem;
-      color: var(--secondary);
-    }
-    .cta {
-      margin: 2.2rem 0 0 0;
-      font-size: 1.23rem;
-      color: var(--secondary);
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-align: center;
-    }
-    /* Services */
+    /* Service Cards */
     .services-list {
       display: flex;
       flex-wrap: wrap;
@@ -154,7 +146,7 @@
     }
     .service-card {
       background: #f6fafd;
-      border-radius: 8px;
+      border-radius: 10px;
       box-shadow: 0 2px 10px 0 rgba(30,58,92,0.04);
       padding: 1.7rem 1.2rem 1.5rem 1.2rem;
       flex: 1 1 240px;
@@ -193,6 +185,30 @@
       opacity: 0.92;
       line-height: 1.5;
       font-weight: 400;
+    }
+    /* Trust Signals */
+    .trust-row {
+      display: flex;
+      gap: 2rem;
+      margin: 2.5rem 0 0.5rem 0;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .trust-card {
+      background: #e9f7f7;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      font-size: 1.01rem;
+      color: var(--primary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-width: 160px;
+    }
+    .trust-card span {
+      font-size: 1.4rem;
+      color: var(--secondary);
     }
     /* About */
     .about-list {
@@ -318,18 +334,19 @@
     @media (max-width: 1200px) {
       .container { max-width: 98vw; padding: 2rem 1vw; }
       nav { max-width: 98vw; }
+      .hero { padding: 0 2vw; }
     }
     @media (max-width: 900px) {
       .container { padding: 1.2rem 0.5vw; }
-      .services-list, .highlights, .locations-list {
+      .services-list, .trust-row, .locations-list {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
       }
-      .service-card, .highlight-card, .location-card { max-width: 100%; }
+      .service-card, .trust-card, .location-card { max-width: 100%; }
     }
     @media (max-width: 700px) {
-      header h1 { font-size: 1.5rem; }
+      .hero-title { font-size: 1.5rem; }
       h2 { font-size: 1.1rem; }
       .container { padding: 0.7rem 0.1vw; border-radius: 0; }
       nav { gap: 0.7rem; font-size: 0.95rem; }
@@ -344,8 +361,13 @@
 </head>
 <body>
   <header>
-    <h1>Vimate Group</h1>
-    <p>India’s Trusted HR & Labour Compliance Partner</p>
+    <div class="hero">
+      <div class="hero-title">Empowering Indian Workplaces</div>
+      <div class="hero-desc">
+        Vimate Group is India’s trusted partner for HR, Payroll, and Workforce Solutions. From our Mumbai HQ to client sites nationwide, we deliver smart, compliant, and people-centric services for organizations of all sizes.
+      </div>
+      <button class="hero-cta" onclick="navigateTo('contact')">Get Started</button>
+    </div>
   </header>
   <div class="nav-wrapper">
     <nav>
@@ -359,19 +381,44 @@
   <div class="container">
     <!-- Home Page -->
     <section id="home" class="active">
-      <h2>Welcome to Vimate Group</h2>
-      <div class="highlights">
-        <div class="highlight-card"><span>🌐</span> Pan-India Presence</div>
-        <div class="highlight-card"><span>🏢</span> Mumbai HQ & Offices Nationwide</div>
-        <div class="highlight-card"><span>🤝</span> 100+ Clients Across Sectors</div>
+      <h2>Why Choose Vimate Group?</h2>
+      <div class="trust-row">
+        <div class="trust-card"><span>🌐</span> Pan-India Service Network</div>
+        <div class="trust-card"><span>🔒</span> 100% Compliance Guarantee</div>
+        <div class="trust-card"><span>🤝</span> 100+ Satisfied Clients</div>
+        <div class="trust-card"><span>🏢</span> Mumbai HQ, Offices Nationwide</div>
       </div>
-      <div class="highlights">
-        <div class="highlight-card"><span>🔍</span> Recruitment</div>
-        <div class="highlight-card"><span>💳</span> Payroll</div>
-        <div class="highlight-card"><span>📝</span> Compliance</div>
-        <div class="highlight-card"><span>👷‍♂️</span> Manpower Outsourcing</div>
+      <div class="services-list" style="margin-top:2.5rem;">
+        <div class="service-card">
+          <span class="service-icon">🔍</span>
+          <div class="service-title">Recruitment</div>
+          <div class="service-desc">
+            Permanent and contract hiring solutions tailored for your industry.
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">👷‍♂️</span>
+          <div class="service-title">Manpower Outsourcing</div>
+          <div class="service-desc">
+            Flexible staffing and workforce solutions across India.
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">💳</span>
+          <div class="service-title">Payroll</div>
+          <div class="service-desc">
+            Accurate, timely payroll processing with statutory compliance.
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📝</span>
+          <div class="service-title">Labour Compliance</div>
+          <div class="service-desc">
+            Licensing, audits, and legal adherence in every state.
+          </div>
+        </div>
       </div>
-      <div class="cta">Empowering Indian Workplaces with Smart HR Solutions.</div>
+      <div class="cta" style="margin-top:2.5rem;">Smart HR, Seamless Compliance, Reliable Delivery.</div>
     </section>
     <!-- Services Page -->
     <section id="services">
@@ -381,56 +428,61 @@
           <span class="service-icon">🔍</span>
           <div class="service-title">Permanent Recruitment</div>
           <div class="service-desc">
-            Skilled talent hiring across industries: manufacturing, retail, IT, pharma, and more.
+            Hire top talent across manufacturing, retail, IT, pharma, and more. Our expert recruiters ensure the right fit for your business.
           </div>
         </div>
         <div class="service-card">
           <span class="service-icon">👷‍♂️</span>
           <div class="service-title">Manpower Staffing</div>
           <div class="service-desc">
-            Contract labour and workforce outsourcing PAN India, with compliance guaranteed.
+            Contract labour and workforce outsourcing PAN India, compliance guaranteed. Scale your teams quickly and flexibly.
           </div>
         </div>
         <div class="service-card">
           <span class="service-icon">💳</span>
           <div class="service-title">Payroll Services</div>
           <div class="service-desc">
-            Full payroll management: statutory compliance, timely salary processing.
+            Full payroll management with statutory compliance and timely salary processing. Focus on your business, we’ll handle the rest.
           </div>
         </div>
         <div class="service-card">
           <span class="service-icon">📝</span>
           <div class="service-title">Labour Compliance Management</div>
           <div class="service-desc">
-            Licensing, registrations, audits, and legal adherence for all Indian states.
+            Licensing, registrations, audits, and legal adherence for all Indian states. Stay compliant, always.
           </div>
         </div>
         <div class="service-card">
           <span class="service-icon">💡</span>
-          <div class="service-title">Additional Services</div>
+          <div class="service-title">HR Advisory & Training</div>
           <div class="service-desc">
-            HR advisory, employee engagement, and training solutions.
+            Employee engagement, training, and strategic HR consulting to build a future-ready workforce.
           </div>
         </div>
       </div>
     </section>
     <!-- About Page -->
     <section id="about">
-      <h2>About Us</h2>
+      <h2>About Vimate Group</h2>
       <ul class="about-list">
-        <li><strong>Vision:</strong> To be India’s most trusted compliance-first HR partner.</li>
-        <li>Founded with a mission to bridge HR gaps in Indian industries.</li>
-        <li>Combining on-ground experience, technology, and statutory expertise.</li>
-        <li>Serving manufacturing, logistics, retail, IT, pharma, and more.</li>
-        <li>Mumbai-based with a delivery network across India.</li>
+        <li><strong>Our Vision:</strong> To be India’s most trusted compliance-first HR partner.</li>
+        <li>Founded to bridge HR gaps in Indian industries, combining on-ground experience with technology and statutory expertise.</li>
+        <li>Serving diverse sectors: manufacturing, logistics, retail, IT, pharma, and more.</li>
+        <li>Headquartered in Mumbai with a delivery network across India.</li>
+        <li>Driven by a passion for people, compliance, and results.</li>
       </ul>
+      <div class="trust-row">
+        <div class="trust-card"><span>🏆</span> Trusted by Industry Leaders</div>
+        <div class="trust-card"><span>⚙️</span> Tech-Enabled HR Solutions</div>
+        <div class="trust-card"><span>📈</span> Measurable Impact</div>
+      </div>
     </section>
     <!-- Locations Page -->
     <section id="locations">
-      <h2>Our Locations & Coverage</h2>
+      <h2>Our Coverage</h2>
       <div class="contact-details">
         <p><b>Headquartered:</b> Mumbai</p>
-        <p>Pan-India delivery & service network covering:</p>
+        <p>Pan-India delivery & service network including:</p>
       </div>
       <div class="locations-list">
         <div class="location-card"><span>📍</span> Gujarat</div>
@@ -443,7 +495,7 @@
         <div class="location-card"><span>📍</span> ...and more</div>
       </div>
       <div class="cta" style="margin-top:2rem;">
-        We expertly handle multi-location, multi-state compliance and staffing needs.
+        Multi-location, multi-state compliance and staffing—handled with ease.
       </div>
     </section>
     <!-- Contact Page -->
@@ -479,14 +531,17 @@
     // Navigation logic for multi-page effect
     const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('.container section');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.forEach(l => l.classList.remove('active'));
-        sections.forEach(sec => sec.classList.remove('active'));
-        link.classList.add('active');
-        document.getElementById(link.dataset.page).classList.add('active');
-        document.querySelector('.container').scrollIntoView({behavior: 'smooth'});
+    function navigateTo(page) {
+      navLinks.forEach(l => {
+        if (l.dataset.page === page) l.classList.add('active');
+        else l.classList.remove('active');
       });
+      sections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(page).classList.add('active');
+      document.querySelector('.container').scrollIntoView({behavior: 'smooth'});
+    }
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => navigateTo(link.dataset.page));
     });
     // Contact form fake submit
     document.getElementById('contactForm').addEventListener('submit', function(e){
