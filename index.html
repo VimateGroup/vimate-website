@@ -133,6 +133,8 @@
       box-shadow: var(--shadow);
       min-height: 60vh;
     }
+    section { display: none; }
+    section.active { display: block; }
     /* Home Page Modern UI */
     .stats-row {
       display: flex;
@@ -576,12 +578,16 @@
           navigateTo(link.dataset.page);
         });
       });
-      document.getElementById('getQuoteBtn').addEventListener('click', function() {
-        navigateTo('contact');
-      });
-      document.getElementById('bookConsultBtn').addEventListener('click', function() {
-        navigateTo('contact');
-      });
+      if (document.getElementById('getQuoteBtn')) {
+        document.getElementById('getQuoteBtn').addEventListener('click', function() {
+          navigateTo('contact');
+        });
+      }
+      if (document.getElementById('bookConsultBtn')) {
+        document.getElementById('bookConsultBtn').addEventListener('click', function() {
+          navigateTo('contact');
+        });
+      }
       // Contact form fake submit
       document.getElementById('contactForm').addEventListener('submit', function(e){
         e.preventDefault();
