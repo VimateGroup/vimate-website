@@ -753,45 +753,55 @@
       </div>
     </section>
     <!-- CONTACT PAGE -->
-    <section id="contact" class="active">
-  <div class="contact-hero">
-    <h2>Let’s Connect!</h2>
-    <p>We’d love to hear from you. Reach out and our team will respond within 24 hours.</p>
-    <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/meeting-2029540_1280.png" alt="Contact Illustration" />
-  </div>
-  <div class="contact-methods">
+    <section id="contact">
+  <div class="contact-section">
     <div class="contact-card">
-      <span class="icon">📞</span>
-      <div>Call Us</div>
-      <a href="tel:+911234567890">+91 12345 67890</a>
-    </div>
-    <div class="contact-card">
-      <span class="icon">✉️</span>
-      <div>Email</div>
-      <a href="mailto:info@vimate.com">info@vimate.com</a>
-    </div>
-    <div class="contact-card">
-      <span class="icon">💬</span>
-      <div>WhatsApp</div>
-      <a href="https://wa.me/911234567890">Chat Now</a>
-    </div>
-    <div class="contact-card">
-      <span class="icon">📍</span>
-      <div>Visit Us</div>
-      <address>123, Main Street, City</address>
-    </div>
-  </div>
-  <form class="contact-form">
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea placeholder="How can we help?" required></textarea>
-    <button type="submit" class="btn">Send Message</button>
-  </form>
-  <div class="map-social">
-    <iframe ...></iframe>
-    <div class="social-links">
-      <a href="#"><span class="icon">🔗</span>LinkedIn</a>
-      <a href="#"><span class="icon">🐦</span>Twitter</a>
+      <div class="contact-info">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/meeting-2029540_1280.png" alt="Contact Illustration" />
+        <h2>Contact Us</h2>
+        <div class="contact-method">
+          <span>📞</span>
+          <div>
+            <strong>Call Us</strong><br>
+            <a href="tel:+911234567890">+91 12345 67890</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <span>✉️</span>
+          <div>
+            <strong>Email</strong><br>
+            <a href="mailto:info@vimate.com">info@vimate.com</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <span>💬</span>
+          <div>
+            <strong>WhatsApp</strong><br>
+            <a href="https://wa.me/911234567890" target="_blank" rel="noopener">Chat Now</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <span>📍</span>
+          <div>
+            <strong>Visit Us</strong><br>
+            <address style="font-style:normal">123, Main Street, City</address>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" target="_blank" aria-label="LinkedIn">🔗 LinkedIn</a>
+          <a href="#" target="_blank" aria-label="Twitter">🐦 Twitter</a>
+        </div>
+      </div>
+      <form class="contact-form" autocomplete="off">
+        <h3>Send us a message</h3>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="How can we help?" required></textarea>
+        <button type="submit">Send Message</button>
+        <div class="form-success" style="display:none; color:#008ecc; font-weight:700; margin-top:10px; text-align:center;">
+          ✅ Thank you for reaching out! We’ll get back to you within 24 hours.
+        </div>
+      </form>
     </div>
   </div>
 </section>
