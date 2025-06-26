@@ -625,6 +625,54 @@
         display: block;
       }
     }
+
+    /* --- Enhanced Mobile Responsiveness --- */
+    @media (max-width: 400px) {
+      .hero-title, h2, h3 {
+        font-size: 1rem !important;
+      }
+      .hero-illustration img {
+        width: 120px !important;
+      }
+      .stat-card, .service-card, .whyus-card, .value-badge, .team-card, .metro-card {
+        padding: 0.5rem !important;
+        font-size: 0.92rem !important;
+      }
+      .contact-card, .contact-form, .contact-info {
+        padding: 0.5rem !important;
+      }
+    }
+    .nav-links a {
+      padding: 0.7rem 1.3rem;
+      font-size: 1.06rem;
+    }
+    @media (max-width: 700px) {
+      .nav-links {
+        gap: 0.4rem;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.98rem;
+      }
+      .metro-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+      }
+    }
+    .btn {
+      min-width: 110px;
+      font-size: 1rem;
+      padding: 0.85rem 1.5rem;
+    }
+    img, .metro-img, .hero-illustration img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    html, body {
+      overflow-x: hidden;
+    }
   </style>
 </head>
 <body>
